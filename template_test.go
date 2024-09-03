@@ -1,7 +1,6 @@
 package learn_go_web
 
 import (
-	"embed"
 	"fmt"
 	"html/template"
 	"io"
@@ -56,9 +55,6 @@ func TestSimpleHTMLDirectory(t *testing.T) {
 	body, _ := io.ReadAll(recorder.Result().Body)
 	fmt.Println(string(body))
 }
-
-//go:embed template/*.gohtml
-var templates embed.FS
 
 func SimpleHTMLFileEmbed(writer http.ResponseWriter, request *http.Request) {
 	t := template.Must(template.ParseFS(templates, "template/*.gohtml"))
